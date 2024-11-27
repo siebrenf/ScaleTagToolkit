@@ -1,0 +1,10 @@
+{
+    "fields": {
+        "1":["havana"],
+        "2":["transcript"]
+    },
+    "attrs": {
+        "transcript_biotype": ["processed_transcript", "lncRNA", "protein_coding"],
+        "gene_biotype": ["lncRNA", "protein_coding"]
+    }
+}

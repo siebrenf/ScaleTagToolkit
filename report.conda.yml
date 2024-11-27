@@ -1,0 +1,11 @@
+name: scaleReport
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - plotly
+  - datapane

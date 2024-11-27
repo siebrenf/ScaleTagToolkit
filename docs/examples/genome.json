@@ -1,0 +1,10 @@
+{
+  "name": "GRCh38",
+  "speciesName": "Homo sapiens",
+  "bowtie_index": "s3://scale.pub/testData/uniATAC/grch38/bowtie2/GRCh38",
+  "gtf": "s3://scale.pub/testData/uniATAC/grch38/GRCh38_selectBiotypes.gtf",
+  "macs_genome": "hs",
+  
+  "archrAlias":"hg38",
+  "annotationConvention":"ENSEMBL"
+}
