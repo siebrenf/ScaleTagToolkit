@@ -11,7 +11,7 @@ If your system does not support *docker*, [singularity](https://sylabs.io/docs/)
 See [Nextflow Containers](https://www.nextflow.io/docs/latest/container.html) for details and additional configuration options. One important point is that all input and output paths need to be available (_bind_) inside the containers. For _docker_, Nextflow should take care of that automatically, for *singularity* this requires user mounts to be enabled in the system-wide configuration (see the notes in the [Nextflow documentation](https://www.nextflow.io/docs/latest/container.html#singularity)).
 
 ## Using Conda
-Another option is using the [Conda](https://docs.conda.io/en/latest) package manager to install most dependencies automatically. This is done by setting `-profile conda`. In this case the following additional steps need to be complete
+Another option is using the [Conda](https://docs.conda.io/en/latest) package manager to install most dependencies automatically. This is done by setting `-profile conda -with-conda`. In this case the following additional steps need to be complete
 - [Manually Install ScaleBio Tools](scaleBioTools.md) on your system first.
 - If running from a sequencer runFolder (.bcls) Illumina [BCL Convert](https://support.illumina.com/sequencing/sequencing_software/bcl-convert.html) is required to be installed (and available on `$PATH`)
 - In order to run the _ArchR_ analysis step of the pipeline using conda [install its dependencies](archrInConda.md). Alternatively set `--runArchR false` to disable _ArchR_ execution. 
