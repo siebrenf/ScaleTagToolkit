@@ -1,9 +1,10 @@
 ### Dependency Installation
-To rerun these scripts locally, their dependencies must be installed into a conda environment which will be used for execution. Using this command from the `ScaleBio/ScaleTagToolkit/`  an ArchR env named `scalereport` will be created:
+To rerun these scripts locally, their dependencies must be installed into a conda environment which will be used for execution. Using this command from the `ScaleBio/ScaleTagToolkit/` a conda environment named `scalereport` will be created:
 
-`conda env create --quiet -f envs/scalereport.conda.yml && conda clean -a --yes`
+`conda env create --quiet --yes -f envs/scalereport.conda.yml`
 
-Once created this environment can be activated: <br>
+Once created this environment can be activated:
+
 `conda activate scalereport`
 
 ### Rerunning scripts

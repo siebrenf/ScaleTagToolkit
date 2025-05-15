@@ -148,11 +148,6 @@
                     "description": "Attempt to run automated ArchR analysis?", 
                     "default": true
                 },
-                "archrCondaEnv": {
-                    "type": "string",
-                    "description": "Path to created conda environment with ArchR installed",
-                    "hidden": true
-                }
             }
         },
         "max_job_request_options": {
