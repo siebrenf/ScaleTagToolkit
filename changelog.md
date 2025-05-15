@@ -1,4 +1,10 @@
 # ScaleBio Tagmentation Toolkit
+## Version 1.1.1
+* Updated conda-based workflow
+  * Automated ArchR installation & usage
+  * Improved conda.yml files
+  * Clarified conda usage in the documentation
+
 ## Version 1.1
 Initial Release as `ScaleTagToolkit`
 
