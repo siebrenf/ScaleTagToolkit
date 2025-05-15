@@ -2,7 +2,6 @@ name: scaleAtacNf
 channels:
   - conda-forge
   - bioconda
-  - defaults
 dependencies:
   - numpy
   - pandas
@@ -14,7 +13,4 @@ dependencies:
   - cutadapt
   - fastqc
   - multiqc
-  - pip
-  - pip:
-    - macs3
-  
+  - macs3

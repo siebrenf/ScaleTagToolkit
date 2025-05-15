@@ -1,13 +1,11 @@
 name: scalereport
 channels:
-  - defaults
+  - conda-forge
 dependencies:
-  - numpy
-  - scipy
-  - matplotlib
-  - pandas
-  - plotly
-  - pip
-  - pip:
-    - datapane
-    - kaleido
+  - pandas=1.5
+  - numpy=1.26
+  - plotly=5.24
+  - seaborn=0.13
+  - datapane=0.17
+  - python-kaleido=0.2
+  - scipy=1.12  # see https://github.com/pandas-dev/pandas/issues/59379
