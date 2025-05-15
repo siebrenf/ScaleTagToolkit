@@ -3,14 +3,14 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - numpy
-  - pandas
-  - pybedtools
-  - samtools
-  - bedtools
-  - tabix
-  - bowtie2
-  - cutadapt
-  - fastqc
-  - multiqc
-  - macs3
+  - numpy=2.2.5
+  - pandas=2.2
+  - pybedtools=0.12
+  - samtools=1.21
+  - bedtools=2.31
+  - tabix=1.11  # may need to upgrade to htslib in the future. See https://github.com/samtools/tabix
+  - bowtie2=2.5
+  - cutadapt=5.0
+  - fastqc=0.12
+  - multiqc=1.28
+  - macs3=3.0.3
