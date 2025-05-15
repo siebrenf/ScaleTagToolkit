@@ -16,4 +16,6 @@ Another option is using the [Conda](https://docs.conda.io/en/latest) package man
 - If running from a sequencer runFolder (.bcls) Illumina [BCL Convert](https://support.illumina.com/sequencing/sequencing_software/bcl-convert.html) is required to be installed (and available on `$PATH`). You can find installation instructions that do not require sudo-rights [here](https://kb.10xgenomics.com/hc/en-us/articles/360001618231-How-to-troubleshoot-installing-bcl2fastq-or-bcl-convert).
 
 ## Manual Dependency installation
-A list of all requirements (excluding ArchR dependencies) can be found in `envs/scaleAtac.conda.yml`, `envs/scalereport.conda.yml` and `envs/archr.conda.yml`. This can be used for manual installation in the user environment if required. All tools need to be available on `$PATH` or based in `/path/to/ScaleTagToolkit/bin/`
+A list of all requirements (excluding ArchR dependencies) can be found in `envs/scaleAtac.conda.yml`, `envs/scalereport.conda.yml` and `envs/archr.conda.yml`.
+This can be used for manual installation in the user environment if required.
+All tools need to be available on `$PATH` or based in `/path/to/ScaleTagToolkit/bin/`
