@@ -1,6 +1,8 @@
+__pycache__/
 .nextflow
 .nextflow*
 bin/bc_parser
 bin/sc_dedup
 bin/sc_counter
 test
+references/
