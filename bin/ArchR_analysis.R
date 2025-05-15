@@ -1,5 +1,23 @@
 #!/usr/bin/env Rscript
-packages <- c("AnnotationHub","ArchR","argparse", "BiocManager","BSgenome","BSgenome.Hsapiens.UCSC.hg38","BSgenome.Hsapiens.NCBI.GRCh38", "Cairo", "devtools","dplyr","GenomicFeatures","ggplot2","glue","magick","parallel","Seurat", "yaml")
+packages <- c(
+  "AnnotationHub",
+  "ArchR",
+  "argparse",
+  #"BiocManager",
+  "BSgenome",
+  #"BSgenome.Hsapiens.UCSC.hg38",
+  #"BSgenome.Hsapiens.NCBI.GRCh38",
+  #"Cairo",
+  #"devtools",
+  #"dplyr",
+  #"GenomicFeatures",
+  #"ggplot2",
+  "glue",
+  #"magick",
+  #"parallel",
+  #"Seurat",
+  "yaml"
+)
 suppressMessages(invisible(lapply(packages, library, character.only = TRUE, quietly=TRUE)))
 
 # UTIL FUNCTIONS

@@ -11,10 +11,9 @@ If your system does not support *docker*, [singularity](https://sylabs.io/docs/)
 See [Nextflow Containers](https://www.nextflow.io/docs/latest/container.html) for details and additional configuration options. One important point is that all input and output paths need to be available (_bind_) inside the containers. For _docker_, Nextflow should take care of that automatically, for *singularity* this requires user mounts to be enabled in the system-wide configuration (see the notes in the [Nextflow documentation](https://www.nextflow.io/docs/latest/container.html#singularity)).
 
 ## Using Conda
-Another option is using the [Conda](https://docs.conda.io/en/latest) package manager to install most dependencies automatically. This is done by setting `-profile conda`. In this case the following additional steps need to be complete
+Another option is using the [Conda](https://docs.conda.io/en/latest) package manager to install most dependencies automatically. This is done by setting `-profile conda -with-conda`. In this case the following additional steps need to be complete
 - [Manually Install ScaleBio Tools](scaleBioTools.md) on your system first.
-- If running from a sequencer runFolder (.bcls) Illumina [BCL Convert](https://support.illumina.com/sequencing/sequencing_software/bcl-convert.html) is required to be installed (and available on `$PATH`)
-- In order to run the _ArchR_ analysis step of the pipeline using conda [install its dependencies](archrInConda.md). Alternatively set `--runArchR false` to disable _ArchR_ execution. 
+- If running from a sequencer runFolder (.bcls) Illumina [BCL Convert](https://support.illumina.com/sequencing/sequencing_software/bcl-convert.html) is required to be installed (and available on `$PATH`). You can find installation instructions that do not require sudo-rights [here](https://kb.10xgenomics.com/hc/en-us/articles/360001618231-How-to-troubleshoot-installing-bcl2fastq-or-bcl-convert).
 
 ## Manual Dependency installation
-A list of all requirements (excluding ArchR dependencies) can be found in `envs/scaleAtac.conda.yml` and `envs/scalereport.conda.yml`. This can be used for manual installation in the user environment if required. All tools need to be available on `$PATH` or based in `/path/to/ScaleTagToolkit/bin/`
+A list of all requirements (excluding ArchR dependencies) can be found in `envs/scaleAtac.conda.yml`, `envs/scalereport.conda.yml` and `envs/archr.conda.yml`. This can be used for manual installation in the user environment if required. All tools need to be available on `$PATH` or based in `/path/to/ScaleTagToolkit/bin/`

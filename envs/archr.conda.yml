@@ -1,0 +1,31 @@
+name: archrEnv
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  #- conda-forge::python=3.8.12
+  #- conda-forge::r-base=4.1.2
+  #- conda-forge::r-essentials
+  - conda-forge::conda-ecosystem-user-package-isolation=1.0
+  - conda-forge::r-argparse
+  - bioconda::r-archr=1.0
+  - bioconda::bioconductor-annotationhub
+  #- conda-forge::r-biocmanager
+  - bioconda::bioconductor-bsgenome
+  - bioconda::bioconductor-bsgenome.hsapiens.ucsc.hg38
+  - bioconda::bioconductor-bsgenome.hsapiens.ncbi.grch38
+  #- conda-forge::r-cairo
+  #- conda-forge::r-devtools=2.4.3
+  #- conda-forge::r-tidyverse
+  - conda-forge::r-dplyr
+  #- bioconda::bioconductor-genomicfeatures
+  #- conda-forge::r-ggplot2
+  - conda-forge::r-glue
+  #- conda-forge::r-magick
+  #- conda-forge::parallel
+  #- conda-forge::r-seurat
+  - conda-forge::r-yaml
+  #- bioconda::bioconductor-singlecellexperiment
+  #- bioconda::bioconductor-org.hs.eg.db
+  #- conda-forge::r-harmony
+  #- bioconda::r-presto=1.0
