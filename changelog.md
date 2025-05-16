@@ -4,6 +4,7 @@
   * Automated ArchR installation & usage
   * Improved conda.yml files
   * Clarified conda usage in the documentation
+* Fixed fastq generation for multi-library samples
 * Fixed library report generation with many samples
 
 ## Version 1.1
