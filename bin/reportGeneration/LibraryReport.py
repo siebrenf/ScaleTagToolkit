@@ -9,7 +9,7 @@ from reportGeneration.AbstractReport import AbstractReport
 from reportGeneration.SampleReport import SampleReport
 from pathlib import Path
 from typing import Dict, List, Tuple
-from itertools import groupby
+from itertools import groupby, cycle
 
 # Threshjson, filterDf (both in QC)
 
@@ -151,13 +151,10 @@ class LibraryReport(AbstractReport):
         self.sampleQCDf['rankOrder'] = self.sampleQCDf.cellNum
         plottingDf = self.sampleQCDf[self.sampleQCDf['rankOrder'].isin(indiciesToInclude)]
         fig = px.line(plottingDf, x=plottingDf.cellNum, y='UniqueReads', color='sample', log_x=True, log_y=True, template=constants.DEFAULT_FIGURE_STYLE, labels={"cellNum": "Cell Barcodes"}, title="Per Sample: Reads Per Cell Barcode")
-        colorsBeingUsed = px.colors.qualitative.Dark24 + px.colors.qualitative.Light24
+        colorsBeingUsed = cycle(px.colors.qualitative.Dark24 + px.colors.qualitative.Light24)
         # Adding vertical lines at cells above threshold for each sample (in same color)
-        for i, (_, cellCount) in enumerate(sorted(cellsAboveDict.items())):
-            # cycle colors
-            while i >= len(colorsBeingUsed):
-                i -= len(colorsBeingUsed)
-            fig.add_vline(x=cellCount, line_dash="dash", line_color=colorsBeingUsed[i])
+        for _, cellCount in sorted(cellsAboveDict.items()):
+            fig.add_vline(x=cellCount, line_dash="dash", line_color=next(colorsBeingUsed))
         return dp.Plot(fig)
 
     def buildReadsPage(self):
@@ -193,11 +190,9 @@ class LibraryReport(AbstractReport):
         Associated colors with categorical values @names
         for consistency between plots 
         '''
-        for i,name in enumerate(sorted(names)):
-            # cycle colors
-            while i >= len(colorsBeingUsed):
-                i -= len(colorsBeingUsed)
-            colorMap[name] = colorsBeingUsed[i]
+        colorsBeingUsed = cycle(colorsBeingUsed)
+        for name in sorted(names):
+            colorMap[name] = next(colorsBeingUsed)
         return colorMap
 
 
