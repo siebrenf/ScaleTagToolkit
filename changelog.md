@@ -4,6 +4,7 @@
   * Automated ArchR installation & usage
   * Improved conda.yml files
   * Clarified conda usage in the documentation
+* Fixed library report generation with many samples
 
 ## Version 1.1
 Initial Release as `ScaleTagToolkit`

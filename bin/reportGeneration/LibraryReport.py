@@ -9,7 +9,7 @@ from reportGeneration.AbstractReport import AbstractReport
 from reportGeneration.SampleReport import SampleReport
 from pathlib import Path
 from typing import Dict, List, Tuple
-from itertools import groupby
+from itertools import groupby, cycle
 
 # Threshjson, filterDf (both in QC)
 
@@ -151,10 +151,10 @@ class LibraryReport(AbstractReport):
         self.sampleQCDf['rankOrder'] = self.sampleQCDf.cellNum
         plottingDf = self.sampleQCDf[self.sampleQCDf['rankOrder'].isin(indiciesToInclude)]
         fig = px.line(plottingDf, x=plottingDf.cellNum, y='UniqueReads', color='sample', log_x=True, log_y=True, template=constants.DEFAULT_FIGURE_STYLE, labels={"cellNum": "Cell Barcodes"}, title="Per Sample: Reads Per Cell Barcode")
-        colorsBeingUsed = px.colors.qualitative.D3
+        colorsBeingUsed = cycle(px.colors.qualitative.Dark24 + px.colors.qualitative.Light24)
         # Adding vertical lines at cells above threshold for each sample (in same color)
-        for i, (_, cellCount) in enumerate(sorted(cellsAboveDict.items())):
-            fig.add_vline(x=cellCount, line_dash="dash", line_color=colorsBeingUsed[i])
+        for _, cellCount in sorted(cellsAboveDict.items()):
+            fig.add_vline(x=cellCount, line_dash="dash", line_color=next(colorsBeingUsed))
         return dp.Plot(fig)
 
     def buildReadsPage(self):
@@ -170,7 +170,8 @@ class LibraryReport(AbstractReport):
         (countsPerSampleDf, lvl1BcCountsPerSampleDf) = self.buildDfFromDemuxSampleMetrics()
         lvl1BcCountsPerSampleDf.sort_values(by=[self.barcodesToPlot[1],'Sample'], inplace=True)
         countsPerSampleDf.sort_values(by=['Sample'], inplace=True)
-        colorMapToUse = LibraryReport.matchColorsToNames(px.colors.qualitative.D3, list(countsPerSampleDf['Sample'].unique()))
+        colorsBeingUsed = px.colors.qualitative.Dark24 + px.colors.qualitative.Light24
+        colorMapToUse = LibraryReport.matchColorsToNames(colorsBeingUsed, list(countsPerSampleDf['Sample'].unique()))
         readsPerSample = px.bar(countsPerSampleDf, x='TotalReads', y='Sample', color='Sample',height=500, color_discrete_map=colorMapToUse,template=constants.DEFAULT_FIGURE_STYLE, title="Reads per sample")
         lvl1BcCountsPerSampleDf.sort_values(by=['Sample'], inplace=True)
         readsPerWellBySample = px.bar(lvl1BcCountsPerSampleDf, x='ReadCount', y=self.barcodesToPlot[1], color='Sample',height=500,template=constants.DEFAULT_FIGURE_STYLE, color_discrete_map=colorMapToUse, labels={self.barcodesToPlot[1]: f'{self.barcodesToPlot[1]} Barcode ', 'ReadCount':'Total Reads'}, title=f"Reads count by {self.barcodesToPlot[1]} Barcode")
@@ -181,7 +182,7 @@ class LibraryReport(AbstractReport):
                 title='Reads'
         )    
 
-    def matchColorsToNames(colorPalette, names) -> Dict[str,str]:
+    def matchColorsToNames(colorsBeingUsed, names) -> Dict[str,str]:
         colorMap = {"Unknown": 'rgb(179, 188, 201)'}
         if ("Unknown" in names):
             names.remove('Unknown')
@@ -189,9 +190,9 @@ class LibraryReport(AbstractReport):
         Associated colors with categorical values @names
         for consistency between plots 
         '''
-        colorsBeingUsed = px.colors.qualitative.D3
-        for i,name in enumerate(sorted(names)):
-            colorMap[name] = colorsBeingUsed[i]
+        colorsBeingUsed = cycle(colorsBeingUsed)
+        for name in sorted(names):
+            colorMap[name] = next(colorsBeingUsed)
         return colorMap
 
 
