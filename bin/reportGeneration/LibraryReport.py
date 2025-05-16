@@ -34,13 +34,20 @@ class LibraryReport(AbstractReport):
         for sample in self.sampleNames:
             filePaths = {}
             if str(self.resultsDir) == '.':
-                filePaths['filterDfPath'] = self.resultsDir / f'{sample}_QC.tsv'
-                filePaths['threshJsonPath'] = self.resultsDir / f'{sample}_thresholds.json'
+                prefix = self.resultsDir
             else:
-                QCPrefix = self.resultsDir / 'QC' / sample / self.qcSubdirectory
-                filePaths['filterDfPath'] = QCPrefix / f'{sample}_QC.tsv'
-                filePaths['threshJsonPath'] = QCPrefix / f'{sample}_thresholds.json'
-            sampleToFilePaths[sample] = filePaths
+                prefix = self.resultsDir / 'QC' / sample / self.qcSubdirectory
+            filePaths['filterDfPath'] = prefix / f'{sample}_QC.tsv'
+            filePaths['threshJsonPath'] = prefix / f'{sample}_thresholds.json'
+            # skip
+            if filePaths['filterDfPath'].is_file() and filePaths['threshJsonPath'].is_file():
+                sampleToFilePaths[sample] = filePaths
+        if len(sampleToFilePaths) == 0:
+            if str(self.resultsDir) == '.':
+                prefix = self.resultsDir
+            else:
+                prefix = self.resultsDir / 'QC'
+            raise FileNotFoundError(f"Zero of {len(self.sampleNames)} QC files found in {prefix}.")
         return sampleToFilePaths
 
     def validateInput(self):
