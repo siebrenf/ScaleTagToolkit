@@ -1,6 +1,11 @@
+.idea/
+__pychache__/
 .nextflow
 .nextflow*
+# scaleBioTools
 bin/bc_parser
 bin/sc_dedup
 bin/sc_counter
+# barcodes
+references/*.txt.gz
 test
