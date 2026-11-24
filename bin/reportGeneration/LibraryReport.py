@@ -29,17 +29,30 @@ class LibraryReport(AbstractReport):
         self.validateInput()
 
     def resolveSampleSpecificFilePaths(self):
+        """
+        Return a dict with QC files per sample.
+        If some samples failed upstream (which can happen due to low quality), these will be omitted from the report.
+        If all samples failed upstream, raise an error to alert the user.
+        """
         sampleToFilePaths = {}
         for sample in self.sampleNames:
             filePaths = {}
             if str(self.resultsDir) == '.':
-                filePaths['filterDfPath'] = self.resultsDir / f'{sample}_QC.tsv'
-                filePaths['threshJsonPath'] = self.resultsDir / f'{sample}_thresholds.json'
+                prefix = self.resultsDir
             else:
-                QCPrefix = self.resultsDir / 'QC' / sample / self.qcSubdirectory
-                filePaths['filterDfPath'] = QCPrefix / f'{sample}_QC.tsv'
-                filePaths['threshJsonPath'] = QCPrefix / f'{sample}_thresholds.json'
-            sampleToFilePaths[sample] = filePaths
+                prefix = self.resultsDir / 'QC' / sample / self.qcSubdirectory
+            filePaths['filterDfPath'] = prefix / f'{sample}_QC.tsv'
+            filePaths['threshJsonPath'] = prefix / f'{sample}_thresholds.json'
+            # skip missing samples
+            if filePaths['filterDfPath'].is_file() and filePaths['threshJsonPath'].is_file():
+                sampleToFilePaths[sample] = filePaths
+        # raise an error if all samples are missing
+        if len(sampleToFilePaths) == 0:
+            if str(self.resultsDir) == '.':
+                prefix = self.resultsDir
+            else:
+                prefix = self.resultsDir / 'QC'
+            raise FileNotFoundError(f"Zero of {len(self.sampleNames)} QC files found in {prefix}.")
         return sampleToFilePaths
 
     def validateInput(self):
