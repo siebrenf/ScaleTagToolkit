@@ -3,6 +3,7 @@
 ## Version 1.1.1
 * Fixed library report generation with many samples
 * Fixed library report generation with low quality samples (dropouts)
+* Fixed fastq generation for multi-library samples
 
 ## Version 1.1
 Initial Release as `ScaleTagToolkit`
