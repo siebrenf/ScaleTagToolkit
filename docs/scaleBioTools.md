@@ -16,4 +16,4 @@ In addition to third-party and open-source software the workflow also uses sever
 ### Installation
 These tools are included in the `scaleAtac` docker container image; when running the workflow in the recommended configuration with _docker_ (or _singularity_, _podman_ etc.), they will be automatically available.
 
- These tool are however currently not available through Conda, so if running without docker, they need to be installed first. A download script to get static pre-compiled binaries for linux (x86_64) is provided in `envs/download-scale-tools.sh`. It will install the binaries in the `bin` directory inside the nextflow workflow, from where they will be available to the workflow.
+These tools are however currently not available through Conda, so if running without docker, they need to be installed first. A download script to get static pre-compiled binaries for linux (x86_64) is provided in `envs/download-scale-tools.sh`. It will install the binaries in the `bin` directory inside the nextflow workflow, from where they will be available to the workflow.
