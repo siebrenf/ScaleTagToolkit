@@ -4,7 +4,7 @@ This is a Nextflow workflow to run analysis of ScaleBio Tagmentation Toolkit seq
 
 ## Getting started
 
-* First install [Nextflow](http://www.nextflow.io)
+* First install [Nextflow v24](http://www.nextflow.io)
 * Download this workflow to your machine
 * Install [dependencies](docs/dependencies.md)
 * Get the bead [barcode sequence file](#barcodes)
