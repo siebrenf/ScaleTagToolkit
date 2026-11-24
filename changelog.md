@@ -1,6 +1,10 @@
 # ScaleBio Tagmentation Toolkit
 
 ## Version 1.1.1
+* Updated conda-based workflow
+  * Automated ArchR installation & usage
+  * Pinned & cleaned conda.yml files
+  * Clarified conda usage in the documentation
 * Fixed library report generation with many samples
 * Fixed library report generation with low quality samples (dropouts)
 * Fixed fastq generation for multi-library samples
