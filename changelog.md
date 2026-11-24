@@ -1,4 +1,8 @@
 # ScaleBio Tagmentation Toolkit
+
+## Version 1.1.1
+* Fixed library report generation with many samples
+
 ## Version 1.1
 Initial Release as `ScaleTagToolkit`
 
