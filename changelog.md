@@ -1,4 +1,8 @@
 # ScaleBio Tagmentation Toolkit
+
+## Version 1.1.1
+* Fixed fastq generation for multi-library samples
+
 ## Version 1.1
 Initial Release as `ScaleTagToolkit`
 

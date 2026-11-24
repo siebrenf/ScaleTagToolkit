@@ -66,7 +66,7 @@ def load_samples(samplesCsv, bcs):
                 indexRead = "index1"
                 for s in seqs.strip().split(';'):
                     if s in bcs:
-                        outSeqs.extend(bcs[seqs])
+                        outSeqs.extend(bcs[s])
                     else:
                         for n in s:
                             if n not in 'ACTGactg':
