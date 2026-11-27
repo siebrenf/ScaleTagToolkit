@@ -4,7 +4,7 @@ This is a Nextflow workflow to run analysis of ScaleBio Tagmentation Toolkit seq
 
 ## Getting started
 
-* First install [Nextflow](http://www.nextflow.io)
+* First install [Nextflow v24](http://www.nextflow.io)
 * Download this workflow to your machine
 * Install [dependencies](docs/dependencies.md)
 * Get the bead [barcode sequence file](#barcodes)
@@ -41,7 +41,7 @@ A small test run, with all input data stored online, can be done with
 
 `nextflow run /PATH/TO/ScaleTagToolkit -profile PROFILE -params-file /PATH/TO/ScaleTagToolkit/docs/examples/runParams.yml --outDir output`
 
-See [dependencies](docs/dependencies) for the best `PROFILE` to use on your system.
+See [dependencies](docs/dependencies.md) for the best `PROFILE` to use on your system.
 
 ### Nextflow Command-line
 **Note** that `nextflow` options are given with a single `-` (e.g. `-profile`), while workflow parameters (e.g. `--outDir`) are given with a double dash `--`.

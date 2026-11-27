@@ -1,6 +1,16 @@
-.nextflow
-.nextflow*
-bin/bc_parser
-bin/sc_dedup
-bin/sc_counter
+# dev
+.idea/
+__pycache__/
 test
+# nextflow
+.nextflow/
+.nextflow.log*
+work/
+# Illumina
+bcl-convert
+# scaleBioTools
+bc_parser
+sc_dedup
+sc_counter
+# barcodes
+references/*.txt.gz
