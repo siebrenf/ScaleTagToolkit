@@ -1,0 +1,25 @@
+name: archr
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - conda-forge::python=3.8
+  - conda-forge::r-base=4.4
+  - conda-forge::conda-ecosystem-user-package-isolation=1.0
+  - bioconda::bioconductor-annotationhub=3
+  - bioconda::bioconductor-bsgenome=1
+  - bioconda::bioconductor-bsgenome.hsapiens.ucsc.hg38
+  - bioconda::bioconductor-bsgenome.hsapiens.ncbi.grch38
+  - bioconda::bioconductor-genomicfeatures=1
+  - bioconda::bioconductor-org.hs.eg.db=3
+  - bioconda::bioconductor-singlecellexperiment=1
+  - conda-forge::parallel
+  - conda-forge::r-argparse=2
+  - conda-forge::r-biocmanager=1
+  - conda-forge::r-cairo=1
+  - conda-forge::r-harmony=1
+  - conda-forge::r-magick=2
+  - conda-forge::r-seurat=5
+  - conda-forge::r-tidyverse=2
+  - conda-forge::r-yaml=2
+  - bioconda::r-archr=1.0.3

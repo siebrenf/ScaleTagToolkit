@@ -414,13 +414,6 @@ output:
 	path("ArchR/${sample}")
 publishDir "$params.outDir" 
 errorStrategy 'ignore'
-	if (workflow.profile == 'conda'){
-		if (params.archrCondaEnv != null) {
-			conda params.archrCondaEnv
-		} else {
-			throwError("In order to run archrAnalysis process with conda profile\na custom conda environment needs to be created and specified using the\n'archrCondaEnv' field in your params file. See the Dependencies section of README for more info or disable ArchR with --runArchR false")
-		} 
-	}
 tag "$sample"
 script:
 	additionalArgs=""

@@ -4,6 +4,10 @@
 * Fixed fastq generation for multi-library samples
 * Fixed library report generation with many samples
 * Fixed library report generation with low quality samples (dropouts)
+* Updated conda-based workflow
+  * Automated ArchR installation & usage
+  * Pinned & cleaned conda.yml files
+  * Clarified conda usage in the documentation
 
 ## Version 1.1
 Initial Release as `ScaleTagToolkit`
