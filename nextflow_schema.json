@@ -127,11 +127,11 @@
                 "subsample": {
                     "type": "boolean",
 		    "description": "Enable sub-sampling of reads (fastq files) to a fixed depth. Target depth per-sample set in samples.csv",
-                    "hidden": true
+                    "hidden": false
                 },
                 "splitMerge": {
                     "type": "boolean",
-                    "hidden": true
+                    "hidden": false
                 }, 
                 "qcAndArchRParams": {
                     "type": "string", 
@@ -146,7 +146,7 @@
                 "runArchR": {
                     "type": "boolean",
                     "description": "Attempt to run automated ArchR analysis?", 
-                    "default": true
+                    "default": false
                 },
                 "archrCondaEnv": {
                     "type": "string",
