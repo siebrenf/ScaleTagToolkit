@@ -3,19 +3,17 @@ packages <- c(
   "AnnotationHub",
   "ArchR",
   "argparse",
-  #"BiocManager",
+  "BiocManager",
   "BSgenome",
-  #"BSgenome.Hsapiens.UCSC.hg38",
-  #"BSgenome.Hsapiens.NCBI.GRCh38",
-  #"Cairo",
-  #"devtools",
-  #"dplyr",
-  #"GenomicFeatures",
-  #"ggplot2",
+  "BSgenome.Hsapiens.UCSC.hg38",
+  "BSgenome.Hsapiens.NCBI.GRCh38",
+  "Cairo",
+  "GenomicFeatures",
   "glue",
-  #"magick",
-  #"parallel",
-  #"Seurat",
+  "magick",
+  "parallel",
+  "Seurat",
+  "tidyverse",
   "yaml"
 )
 suppressMessages(invisible(lapply(packages, library, character.only = TRUE, quietly=TRUE)))
@@ -495,14 +493,10 @@ runArchRAnalysis <- function(genomeAlias, orgName, fragments, sampleNames, marke
     makeQCPlots(proj)
     makeFieldPlot(proj, "TSSEnrichment")
 
-    saveArchRProject(proj, load=FALSE)
-
     # Atleast 1000 variable features required for iterative LSI to run 
     if (variableFeatureCount >= 1000) {
         proj <- calcAndFilterDoublets(proj, variableFeatureCount)
         proj <- clusterAndDimRed(proj, sampleNames, variableFeatureCount)
-        saveArchRProject(proj, load=FALSE)
-
         proj <- removeUnclusteredCells(proj)
 
         # Data Visualization 
@@ -516,10 +510,11 @@ runArchRAnalysis <- function(genomeAlias, orgName, fragments, sampleNames, marke
         }
         writeGeneScoreMatrix(proj, outputDir)
         writeProjectMetadata(proj, outputDir)
+        saveArchRProject(proj,load=FALSE)
     } else {
+        saveArchRProject(proj,load=FALSE)
         stop("ONE OR MORE OF THE SPECIFIED SAMPLE HAS <1000 VARIABLE REGIONS DETECTED BETWEEN CELLS (1000 NEEDED FOR DIMENSIONALITY REDUCTION).\n  THIS MAY BE THE RESULT OF EITHER POOR DATA QUALITY OR POOR QC FILTERING.\nTRY THE FOLLOWING:\n- Increase the value for 'minimumTSS' in the user specified qcAndArchRParams file (see 'Quality Control and ArchR Analysis Parameters' section of the README for guidance)")
     }
-    saveArchRProject(proj,load=FALSE)
 }
 
 parser <- ArgumentParser()

@@ -1,4 +1,4 @@
-name: scaleAtacNf
+name: scaleAtac
 channels:
   - conda-forge
   - bioconda
